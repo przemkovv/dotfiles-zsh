@@ -1,3 +1,4 @@
+export TERM=xterm-256color
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
@@ -42,7 +43,7 @@ ZSH_THEME="blinks"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux git svn colorize colored-man history git-extras git-flow git-remote-branch gitfast gitignore last-working-dir web-search fabric pip)
+plugins=(vi-mode tmux git svn colorize colored-man history git-extras git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
