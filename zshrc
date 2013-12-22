@@ -1,4 +1,4 @@
-export TERM=xterm-256color
+[ -z "$TMUX" ] && export TERM=xterm-256color
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
@@ -43,11 +43,11 @@ ZSH_THEME="blinks"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux git svn colorize colored-man history git-extras git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip)
+plugins=(vi-mode tmux git svn colorize colored-man history git-extras git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip cabal)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$PATH:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+export PATH=$HOME/.cabal/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
 
 #autoload -U compinit; compinit
 setopt COMPLETE_IN_WORD
@@ -58,6 +58,10 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 bindkey -M menuselect '^@' accept-and-infer-next-history
 zstyle ':completion:*' special-dirs true
 zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tty,cmd'
+
+# generate descriptions with magic.
+zstyle ':completion:*' auto-description 'specify: %d'
+
 alias -s tex=vim
 alias -s pdf=okular
 alias -g G='| grep'
