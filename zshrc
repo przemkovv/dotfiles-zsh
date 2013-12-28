@@ -67,8 +67,14 @@ alias -s pdf=okular
 alias -g G='| grep'
 alias -g L='| less'
 
-# Rebind ^R
-bindkey "^R" history-incremental-search-backward
+export EDITOR="vim"
+bindkey -v 
+# vi style incremental search
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward  
+
 # Make deleting past last insert possible
 bindkey -M viins '^h' backward-delete-char
 bindkey -M viins '^?' backward-delete-char
