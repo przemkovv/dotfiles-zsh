@@ -7,8 +7,8 @@ ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="agnoster"
-ZSH_THEME="blinks"
+ZSH_THEME="agnoster"
+#ZSH_THEME="blinks"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -77,3 +77,7 @@ bindkey -M viins '^w' backward-kill-word
 stty ixany
 stty ixoff -ixon
 
+# 10ms for key sequences
+KEYTIMEOUT=1
+
+eval `dircolors ~/.dircolors`
