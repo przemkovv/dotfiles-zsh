@@ -28,6 +28,8 @@
 CURRENT_BG='NONE'
 SEGMENT_SEPARATOR=''
 
+BUILT_PROMPT=''
+
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
@@ -36,22 +38,22 @@ prompt_segment() {
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
   [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
   if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
+    BUILT_PROMPT+=" %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
   else
-    echo -n "%{$bg%}%{$fg%} "
+    BUILT_PROMPT+="%{$bg%}%{$fg%} "
   fi
   CURRENT_BG=$1
-  [[ -n $3 ]] && echo -n $3
+  [[ -n $3 ]] && BUILT_PROMPT+=$3
 }
 
 # End the prompt, closing any open segments
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
-    echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
+    BUILT_PROMPT+=" %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
   else
-    echo -n "%{%k%}"
+    BUILT_PROMPT+="%{%k%}"
   fi
-  echo -n "%{%f%}"
+  BUILT_PROMPT+="%{%f%}"
   CURRENT_BG=''
 }
 
@@ -90,7 +92,7 @@ prompt_git() {
     zstyle ':vcs_info:*' formats ' %u%c'
     zstyle ':vcs_info:*' actionformats '%u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//  }${vcs_info_msg_0_}"
+    BUILT_PROMPT+="${ref/refs\/heads\//  }${vcs_info_msg_0_}"
   fi
 }
 
@@ -110,7 +112,7 @@ prompt_hg() {
         # if working copy is clean
         prompt_segment green black
       fi
-      echo -n $(hg prompt "☿ {rev}@{branch}") $st
+      BUILT_PROMPT+=$(hg prompt "☿ {rev}@{branch}") $st
     else
       st=""
       rev=$(hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
@@ -124,7 +126,7 @@ prompt_hg() {
       else
         prompt_segment green black
       fi
-      echo -n "☿ $rev@$branch" $st
+      BUILT_PROMPT+="☿ $rev@$branch" $st
     fi
   fi
 }
@@ -184,10 +186,12 @@ build_prompt() {
   prompt_dir
   prompt_git
   prompt_hg
-  prompt_segment NONE default  "\n"
+  prompt_segment NONE default  "
+"
   prompt_vi
   prompt_su
   prompt_end
+  echo -n $BUILT_PROMPT
 
 }
 
