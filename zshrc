@@ -43,7 +43,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux git svn colorize colored-man history git-extras git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip cabal)
+plugins=(vi-mode tmux git svn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip cabal)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -74,6 +74,7 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward  
+bindkey '^Y' yank
 
 # Make deleting past last insert possible
 bindkey -M viins '^h' backward-delete-char
