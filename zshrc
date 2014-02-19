@@ -89,3 +89,8 @@ stty ixoff -ixon
 KEYTIMEOUT=1
 
 eval `dircolors ~/.dircolors`
+export MC_SKIN=/usr/share/mc/skins/solarized.ini
+
+#setxkbmap -option ctrl:nocaps
+
+archey3
