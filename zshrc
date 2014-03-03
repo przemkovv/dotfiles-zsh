@@ -43,7 +43,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip cabal)
+plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip cabal)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -64,8 +64,7 @@ zstyle ':completion:*' auto-description 'specify: %d'
 
 alias -s tex=vim
 alias -s pdf=okular
-alias -g G='| grep'
-alias -g L='| less'
+alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 
 export EDITOR="vim"
 bindkey -v 
@@ -92,5 +91,4 @@ eval `dircolors ~/.dircolors`
 export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
 #setxkbmap -option ctrl:nocaps
-
-archey3
+[[ `hostname` -eq 'gandalf' ]] && archey3
