@@ -43,12 +43,29 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip cabal)
+plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$HOME/.cabal/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+export PATH=$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
 
+# history:
+setopt inc_append_history    # append history list to the history file (important for multiple parallel zsh sessions!)
+setopt share_history        # import new commands from the history file also in other zsh-session
+setopt extended_history     # save each command's beginning timestamp and the duration to the history file
+setopt hist_ignore_all_dups # If a new command line being added to the history list duplicates an older one, the older command is removed from the list
+setopt hist_ignore_space    # remove command lines from the history list when the first character on the line is a space
+
+#HISTFILE=$HOME/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000 # useful for setopt append_history
+
+
+
+
+
+setopt auto_cd
+cdpath=($HOME/projects $HOME/projects/carmnet/src)
 #autoload -U compinit; compinit
 setopt COMPLETE_IN_WORD
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' 
@@ -65,7 +82,12 @@ zstyle ':completion:*' auto-description 'specify: %d'
 alias -s tex=vim
 alias -s pdf=okular
 alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
+alias pbcopy='xsel --primary --input'
+alias pbpaste='xsel --primary --output'
+alias cpwd='pwd|xargs echo -n|pbcopy'
 
+export TERMINAL=termite
+export BROWSER=firefox
 export EDITOR="vim"
 bindkey -v 
 # vi style incremental search
@@ -89,6 +111,7 @@ KEYTIMEOUT=1
 
 eval `dircolors ~/.dircolors`
 export MC_SKIN=/usr/share/mc/skins/solarized.ini
+
 
 #setxkbmap -option ctrl:nocaps
 [[ `hostname` -eq 'gandalf' ]] && archey3
