@@ -114,4 +114,4 @@ export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
 
 #setxkbmap -option ctrl:nocaps
-[[ `hostname` -eq 'gandalf' ]] && archey3
+[[ `hostname` = 'gandalf' ]] && archey3
