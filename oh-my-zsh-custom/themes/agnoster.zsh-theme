@@ -90,9 +90,9 @@ prompt_git() {
     zstyle ':vcs_info:*' stagedstr '✚'
     zstyle ':vcs_info:git:*' unstagedstr '●'
     zstyle ':vcs_info:*' formats ' %u%c'
-    zstyle ':vcs_info:*' actionformats '%u%c'
+    zstyle ':vcs_info:*' actionformats ' %u%c'
     vcs_info
-    BUILT_PROMPT+="${ref/refs\/heads\//  }${vcs_info_msg_0_}"
+    BUILT_PROMPT+="${ref/refs\/heads\// }${vcs_info_msg_0_}"
   fi
 }
 
