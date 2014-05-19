@@ -47,7 +47,7 @@ plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-br
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+export PATH=$HOME/.gem/ruby/2.1.0/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
 
 # history:
 setopt inc_append_history    # append history list to the history file (important for multiple parallel zsh sessions!)
@@ -86,6 +86,10 @@ alias pbcopy='xsel --primary --input'
 alias pbpaste='xsel --primary --output'
 alias cpwd='pwd|xargs echo -n|pbcopy'
 
+alias vim='vim -w ~/.vimlog "$@"'
+alias vs='vim --servername"VIM"'
+alias vo='vim --servername"VIM" --remote-silent'
+
 export TERMINAL=termite
 export BROWSER=firefox
 export EDITOR="vim"
@@ -115,3 +119,7 @@ export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
 #setxkbmap -option ctrl:nocaps
 [[ `hostname` = 'gandalf' ]] && archey3
+
+#export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
+
+
