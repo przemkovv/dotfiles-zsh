@@ -1,4 +1,6 @@
 [ -z "$TMUX" ] && export TERM=xterm-256color
+#if [ "$TMUX" == "" ]; then tmux; fi
+#
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
@@ -81,7 +83,7 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 zstyle ':completion:*' auto-description 'specify: %d'
 
 alias -s tex=vim
-alias -s pdf=okular
+alias -s pdf=zathura
 alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias pbcopy='xsel --primary --input'
 alias pbpaste='xsel --primary --output'
@@ -106,7 +108,7 @@ bindkey '^Y' yank
 bindkey -M viins '^h' backward-delete-char
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^w' backward-kill-word
-bindkey -M viins 'jk' vi-cmd-mode
+#bindkey -M viins 'jk' vi-cmd-mode
 
 autoload -U edit-command-line
 zle -N edit-command-line
