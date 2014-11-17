@@ -43,7 +43,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip rails ruby sibling-cd)
+plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip rails ruby sibling-cd dirpersist pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -61,6 +61,7 @@ HISTSIZE=10000000
 SAVEHIST=10000000 # useful for setopt append_history
 
 
+setopt extendedglob
 
 
 
@@ -107,6 +108,10 @@ bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^w' backward-kill-word
 bindkey -M viins 'jk' vi-cmd-mode
 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 stty ixany
 stty ixoff -ixon
 
@@ -118,7 +123,7 @@ export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
 
 #setxkbmap -option ctrl:nocaps
-[[ `hostname` = 'gandalf' ]] && archey3
+ archey3
 
 #export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
