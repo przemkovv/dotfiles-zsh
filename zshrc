@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
+plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -93,6 +93,8 @@ alias vim='vim -w ~/.vimlog "$@"'
 alias vs='vim --servername"VIM"'
 alias vo='vim --servername"VIM" --remote-silent'
 
+alias o='xdg-open'
+
 export TERMINAL=termite
 export BROWSER=firefox
 export EDITOR="vim"
@@ -122,6 +124,10 @@ KEYTIMEOUT=1
 
 eval `dircolors ~/.dircolors`
 export MC_SKIN=/usr/share/mc/skins/solarized.ini
+
+function edit_all_sources() {
+    $EDITOR $1/**/*.(cpp|h)
+}
 
 
 #setxkbmap -option ctrl:nocaps
