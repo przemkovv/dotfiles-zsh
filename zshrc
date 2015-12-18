@@ -45,11 +45,12 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore last-working-dir fabric pip rails ruby sibling-cd dirpersist pass vagrant)
+plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore git-extras fabric pip rails ruby sibling-cd dirpersist pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$HOME/.gem/ruby/2.1.0/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+export PATH=$HOME/.cabal/bin:$HOME/.gem/ruby/2.1.0/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # history:
 setopt inc_append_history    # append history list to the history file (important for multiple parallel zsh sessions!)
@@ -82,20 +83,28 @@ zstyle ':completion:*:*:kill:*:processes' command 'ps --forest -e -o pid,user,tt
 # generate descriptions with magic.
 zstyle ':completion:*' auto-description 'specify: %d'
 
-alias -s tex=vim
+alias -s tex=nvim
 alias -s pdf=zathura
 alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias pbcopy='xsel --primary --input'
 alias pbpaste='xsel --primary --output'
 alias cpwd='pwd|xargs echo -n|pbcopy'
 
-alias vim='vim -w ~/.vimlog "$@"'
+alias vim='nvim -w ~/.vimlog "$@"'
 alias vs='vim --servername"VIM"'
 alias vo='vim --servername"VIM" --remote-silent'
 
+alias o='xdg-open'
+
+alias agenda='gcalcli agenda'
+alias week='gcalcli calw'
+alias month='gcalcli calm'
+
 export TERMINAL=termite
 export BROWSER=firefox
-export EDITOR="vim"
+export EDITOR="nvim"
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 bindkey -v 
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
@@ -123,6 +132,9 @@ KEYTIMEOUT=1
 eval `dircolors ~/.dircolors`
 export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
+function edit_all_sources() {
+    $EDITOR $1/**/*.(cpp|h|hpp)
+}
 
 #setxkbmap -option ctrl:nocaps
  archey3
@@ -130,3 +142,5 @@ export MC_SKIN=/usr/share/mc/skins/solarized.ini
 #export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 
+
+[ -s "/home/przemkovv/.dnx/dnvm/dnvm.sh" ] && . "/home/przemkovv/.dnx/dnvm/dnvm.sh" # Load dnvm
