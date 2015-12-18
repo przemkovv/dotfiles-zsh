@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
+plugins=(history-substring-search vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -71,7 +71,7 @@ setopt auto_cd
 cdpath=($HOME/projects $HOME/projects/carmnet/src)
 #autoload -U compinit; compinit
 setopt COMPLETE_IN_WORD
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*' 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 #zmodload -i zsh/complist
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -89,22 +89,29 @@ alias pbcopy='xsel --primary --input'
 alias pbpaste='xsel --primary --output'
 alias cpwd='pwd|xargs echo -n|pbcopy'
 
-alias vim='vim -w ~/.vimlog "$@"'
+alias vim='nvim -w ~/.vimlog "$@"'
 alias vs='vim --servername"VIM"'
 alias vo='vim --servername"VIM" --remote-silent'
+
+alias vp='/usr/share/visual-paradigm-community/bin/Visual_Paradigm_Fixed'
+
 
 alias o='xdg-open'
 
 export TERMINAL=termite
 export BROWSER=firefox
-export EDITOR="vim"
-bindkey -v 
+export EDITOR="nvim"
+bindkey -v
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward  
+bindkey '^N' history-search-forward
 bindkey '^Y' yank
+#
+# bind k and j for VI mode
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # Make deleting past last insert possible
 bindkey -M viins '^h' backward-delete-char
@@ -126,7 +133,7 @@ eval `dircolors ~/.dircolors`
 export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
 function edit_all_sources() {
-    $EDITOR $1/**/*.(cpp|h)
+    $EDITOR $1/**/*.(cpp|h|hpp)
 }
 
 
@@ -135,4 +142,6 @@ function edit_all_sources() {
 
 #export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
-
+export CC=clang
+export CXX=clang++
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
