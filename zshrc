@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(history-substring-search vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
+plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -116,8 +116,8 @@ bindkey '^N' history-search-forward
 bindkey '^Y' yank
 #
 # bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+#bindkey -M vicmd 'k' history-substring-search-up
+#bindkey -M vicmd 'j' history-substring-search-down
 
 # Make deleting past last insert possible
 bindkey -M viins '^h' backward-delete-char
@@ -147,6 +147,7 @@ function edit_all_sources() {
 
 #export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
+export PWD_LENGTH=20
 
 
 [ -s "/home/przemkovv/.dnx/dnvm/dnvm.sh" ] && . "/home/przemkovv/.dnx/dnvm/dnvm.sh" # Load dnvm
