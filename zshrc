@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
+plugins=(docker vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -115,9 +115,6 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 bindkey '^Y' yank
 #
-# bind k and j for VI mode
-#bindkey -M vicmd 'k' history-substring-search-up
-#bindkey -M vicmd 'j' history-substring-search-down
 
 # Make deleting past last insert possible
 bindkey -M viins '^h' backward-delete-char
@@ -154,3 +151,10 @@ export PWD_LENGTH=20
 export CC=clang
 export CXX=clang++
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+
+#export DOCKER_HOST=localhost:2375
+
+export FZF_CTRL_R_OPTS=--tiebreak=begin,index
+export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
