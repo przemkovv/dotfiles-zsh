@@ -45,7 +45,7 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(docker vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
+plugins=(docker history-substring-search vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -147,14 +147,15 @@ function edit_all_sources() {
 export PWD_LENGTH=20
 
 
-[ -s "/home/przemkovv/.dnx/dnvm/dnvm.sh" ] && . "/home/przemkovv/.dnx/dnvm/dnvm.sh" # Load dnvm
-export CC=clang
-export CXX=clang++
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 
 #export DOCKER_HOST=localhost:2375
 
 export FZF_CTRL_R_OPTS=--tiebreak=begin,index
 export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
+
+export CC=clang
+export CXX=clang++
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+export XZ_OPT=-T0
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
