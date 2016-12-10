@@ -154,12 +154,14 @@ export PWD_LENGTH=20
 export FZF_CTRL_R_OPTS=--tiebreak=begin,index
 export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
 
-# export CC=clang
-# export CXX=clang++
-export CC=gcc
-export CXX=g++
+# export CC="clang -flto=thin"
+# export CXX="clang++ -flto=thin"
+export CC="gcc"
+export CXX="g++"
+export LD=gcc-ld
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export XZ_OPT=-T0
+export CTEST_OUTPUT_ON_FAILURE=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
