@@ -26,7 +26,8 @@
 # A few utility functions to make it easy and re-usable to draw segmented prompts
 
 CURRENT_BG='NONE'
-SEGMENT_SEPARATOR=''
+#SEGMENT_SEPARATOR=''
+SEGMENT_SEPARATOR=''
 
 BUILT_PROMPT=''
 
@@ -207,7 +208,7 @@ build_prompt() {
   prompt_context
   prompt_dir
   prompt_git
-  prompt_hg
+  #prompt_hg
   prompt_segment NONE default  "
 "
   prompt_vi

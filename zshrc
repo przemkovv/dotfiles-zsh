@@ -32,7 +32,7 @@ ZSH_THEME="agnoster"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want to disable command autocorrection
- DISABLE_CORRECTION="true"
+DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -45,11 +45,12 @@ ZSH_THEME="agnoster"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(docker history-substring-search vi-mode tmux common-aliases git svn mvn colorize git-flow git-remote-branch gitfast gitignore fabric pip rails ruby sibling-cd dirpersist lein pass vagrant)
+plugins=(fzf-functions docker history-substring-search vi-mode tmux common-aliases colorize git-extras git-flow-avh gitignore pip ruby sibling-cd dirpersist pass vagrant)
+#plugins=(docker history-substring-search vi-mode tmux common-aliases git svn colorize git-flow git-remote-branch gitfast gitignore pip ruby sibling-cd dirpersist pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=$HOME/.cabal/bin:$HOME/.gem/ruby/2.1.0/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+export PATH=$HOME/node_modules/.bin:$HOME/.cabal/bin:$HOME/.gem/ruby/2.1.0/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # history:
@@ -136,11 +137,11 @@ eval `dircolors ~/.dircolors`
 export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
 function edit_all_sources() {
-    $EDITOR $1/**/*.(cpp|h|hpp)
+    $EDITOR $1/**/*.(cpp|h|hpp|java)
 }
 
 #setxkbmap -option ctrl:nocaps
- archey3
+archey3
 
 #export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
@@ -153,9 +154,12 @@ export PWD_LENGTH=20
 export FZF_CTRL_R_OPTS=--tiebreak=begin,index
 export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
 
-export CC=clang
-export CXX=clang++
+# export CC=clang
+# export CXX=clang++
+export CC=gcc
+export CXX=g++
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export XZ_OPT=-T0
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
