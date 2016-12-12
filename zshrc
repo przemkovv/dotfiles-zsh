@@ -45,7 +45,7 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(fzf-functions docker history-substring-search vi-mode tmux common-aliases colorize git-extras git-flow-avh gitignore pip ruby sibling-cd dirpersist pass vagrant)
+plugins=(fzf-functions docker history-substring-search vi-mode tmux common-aliases colorize git git-extras git-flow-avh gitignore pip ruby sibling-cd dirpersist pass vagrant)
 #plugins=(docker history-substring-search vi-mode tmux common-aliases git svn colorize git-flow git-remote-branch gitfast gitignore pip ruby sibling-cd dirpersist pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
@@ -154,14 +154,12 @@ export PWD_LENGTH=20
 export FZF_CTRL_R_OPTS=--tiebreak=begin,index
 export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
 
-# export CC="clang -flto=thin"
-# export CXX="clang++ -flto=thin"
-export CC="gcc"
-export CXX="g++"
-export LD=gcc-ld
+# export CC=clang
+# export CXX=clang++
+export CC=gcc
+export CXX=g++
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export XZ_OPT=-T0
-export CTEST_OUTPUT_ON_FAILURE=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
