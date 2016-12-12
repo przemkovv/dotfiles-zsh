@@ -103,6 +103,8 @@ alias month='gcalcli calm'
 
 alias vp='/usr/share/visual-paradigm-community/bin/Visual_Paradigm_Fixed'
 
+alias gdb='gdb -q -tui'
+
 
 
 export TERMINAL=termite
