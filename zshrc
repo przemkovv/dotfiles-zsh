@@ -91,6 +91,7 @@ alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^
 alias pbcopy='xsel --primary --input'
 alias pbpaste='xsel --primary --output'
 alias cpwd='pwd|xargs echo -n|pbcopy'
+alias porn=' mpv http://pornhub.com/random'
 
 alias vim='nvim -w ~/.vimlog "$@"'
 alias vs='vim --servername"VIM"'
@@ -147,8 +148,11 @@ function edit_all_sources() {
 }
 
 #setxkbmap -option ctrl:nocaps
-archey3
-
+if ! [ -x "$(command -v archey3)" ]; then
+  neofetch
+else
+  archey3
+fi
 #export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 export PWD_LENGTH=20
