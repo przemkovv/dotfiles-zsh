@@ -45,18 +45,19 @@ DISABLE_CORRECTION="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(fzf-functions docker history-substring-search vi-mode tmux common-aliases colorize git git-extras git-flow-avh gitignore pip ruby sibling-cd dirpersist pass vagrant)
+plugins=(fzf-functions docker history-substring-search vi-mode tmux common-aliases colorize git git-extras git-flow-avh gitignore pip ruby sibling-cd dirpersist pass vagrant zsh-syntax-highlighting)
 #plugins=(docker history-substring-search vi-mode tmux common-aliases git svn colorize git-flow git-remote-branch gitfast gitignore pip ruby sibling-cd dirpersist pass vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=$HOME/node_modules/.bin:$HOME/.cabal/bin:$HOME/.gem/ruby/2.1.0/bin:$HOME/.local/bin:/home/przemkovv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+export PATH="/usr/lib/ccache/bin/:$PATH"
 
 # history:
 setopt inc_append_history    # append history list to the history file (important for multiple parallel zsh sessions!)
 setopt share_history        # import new commands from the history file also in other zsh-session
-setopt extended_history     # save each command's beginning timestamp and the duration to the history file
+setopt extended_history     # save each commands beginning timestamp and the duration to the history file
 setopt hist_ignore_all_dups # If a new command line being added to the history list duplicates an older one, the older command is removed from the list
 setopt hist_ignore_space    # remove command lines from the history list when the first character on the line is a space
 
@@ -104,8 +105,11 @@ alias month='gcalcli calm'
 alias vp='/usr/share/visual-paradigm-community/bin/Visual_Paradigm_Fixed'
 
 alias gdb='gdb -q -tui'
+alias ip='ip -c'
+alias watch='watch --color'
 
-
+alias fd='find . -type d -iname'
+alias ff='find . -type f -iname'
 
 export TERMINAL=termite
 export BROWSER=firefox
@@ -156,12 +160,15 @@ export PWD_LENGTH=20
 export FZF_CTRL_R_OPTS=--tiebreak=begin,index
 export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
 
-# export CC=clang
-# export CXX=clang++
-export CC=gcc
-export CXX=g++
+export CC=clang
+export CXX=clang++
+# export CC=gcc
+# export CXX=g++
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export XZ_OPT=-T0
 
+export GPG_TTY=$(tty)
+
+export HUNTER_ROOT=~/dev/hunter
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
