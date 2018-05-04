@@ -1,4 +1,4 @@
-[ -z "$TMUX" ] && export TERM=xterm-256color
+# [ -z "$TMUX" ] && export TERM=xterm-256color
 #if [ "$TMUX" == "" ]; then tmux; fi
 #
 # Path to your oh-my-zsh configuration.
