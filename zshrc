@@ -5,16 +5,7 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_CUSTOM=$HOME/.oh-my-zsh-custom
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="agnoster"
-#ZSH_THEME="blinks"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -40,13 +31,10 @@ DISABLE_CORRECTION="true"
 # Uncomment following line if you want to disable marking untracked files under
 # VCS as dirty. This makes repository status check for large repositories much,
 # much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(fzf-functions docker history-substring-search vi-mode tmux common-aliases colorize git git-extras git-flow-avh gitignore pip ruby sibling-cd dirpersist pass vagrant zsh-syntax-highlighting)
-#plugins=(docker history-substring-search vi-mode tmux common-aliases git svn colorize git-flow git-remote-branch gitfast gitignore pip ruby sibling-cd dirpersist pass vagrant)
+plugins=(fzf-functions history-substring-search vi-mode tmux common-aliases colorize git git-extras gitignore pip ruby sibling-cd dirpersist pass themes zsh-syntax-highlighting)
+
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -65,10 +53,7 @@ setopt hist_ignore_space    # remove command lines from the history list when th
 HISTSIZE=10000000
 SAVEHIST=10000000 # useful for setopt append_history
 
-
 setopt extendedglob
-
-
 
 setopt auto_cd
 cdpath=($HOME/projects $HOME/projects/carmnet/src)
@@ -91,19 +76,9 @@ alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^
 alias pbcopy='xsel --primary --input'
 alias pbpaste='xsel --primary --output'
 alias cpwd='pwd|xargs echo -n|pbcopy'
-alias porn=' mpv http://pornhub.com/random'
 
-alias vim='nvim -w ~/.vimlog "$@"'
-alias vs='vim --servername"VIM"'
-alias vo='vim --servername"VIM" --remote-silent'
-
-alias o='xdg-open'
-
-alias agenda='gcalcli agenda'
-alias week='gcalcli calw'
-alias month='gcalcli calm'
-
-alias vp='/usr/share/visual-paradigm-community/bin/Visual_Paradigm_Fixed'
+alias nvim='nvim -w ~/.vimlog "$@"'
+alias vim='vim -w ~/.vimlog "$@"'
 
 alias gdb='gdb -q -tui'
 alias ip='ip -c'
@@ -112,10 +87,10 @@ alias watch='watch --color'
 alias fd='find . -type d -iname'
 alias ff='find . -type f -iname'
 
-export TERMINAL=termite
+export TERMINAL=st
 export BROWSER=firefox
 export EDITOR="nvim"
-bindkey -v 
+bindkey -v
 # vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
@@ -128,7 +103,6 @@ bindkey '^Y' yank
 bindkey -M viins '^h' backward-delete-char
 bindkey -M viins '^?' backward-delete-char
 bindkey -M viins '^w' backward-kill-word
-#bindkey -M viins 'jk' vi-cmd-mode
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -141,7 +115,6 @@ stty ixoff -ixon
 KEYTIMEOUT=1
 
 eval `dircolors ~/.dircolors`
-export MC_SKIN=/usr/share/mc/skins/solarized.ini
 
 function edit_all_sources() {
     $EDITOR $1/**/*.(cpp|h|hpp|java)
@@ -153,13 +126,8 @@ if ! [ -x "$(command -v archey3)" ]; then
 else
   archey3
 fi
-#export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 
 export PWD_LENGTH=20
-
-
-
-#export DOCKER_HOST=localhost:2375
 
 export FZF_CTRL_R_OPTS=--tiebreak=begin,index
 export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
@@ -175,4 +143,3 @@ export GPG_TTY=$(tty)
 
 export HUNTER_ROOT=~/dev/hunter
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
