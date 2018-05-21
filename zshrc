@@ -119,7 +119,7 @@ alias pbpaste='xsel --primary --output'
 alias cpwd='pwd|xargs echo -n|pbcopy'
 
 alias nvim='nvim -w ~/.vimlog "$@"'
-alias vim='vim -w ~/.vimlog "$@"'
+alias vim='vim --servername "VIM" -w ~/.vimlog "$@"'
 
 alias gdb='gdb -q -tui'
 alias ip='ip -c'
@@ -181,6 +181,9 @@ export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswi
 export XZ_OPT=-T0
 
 export GPG_TTY=$(tty)
+if [[ -n "$SSH_CONNECTION" ]] ;then
+    export PINENTRY_USER_DATA="USE_CURSES=1"
+fi
 
 export HUNTER_ROOT=~/dev/hunter
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
