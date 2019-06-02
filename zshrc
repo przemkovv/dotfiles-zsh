@@ -59,7 +59,7 @@ SPACESHIP_PROMPT_ORDER=(
   # julia         # Julia section
   # docker        # Docker section
   # aws           # Amazon Web Services section
-  # venv          # virtualenv section
+  venv          # virtualenv section
   # conda         # conda virtualenv section
   pyenv         # Pyenv section
   # dotnet        # .NET section
@@ -67,14 +67,14 @@ SPACESHIP_PROMPT_ORDER=(
   # kubecontext   # Kubectl context section
   exec_time     # Execution time
   line_sep      # Line break
-  battery       # Battery level and status
+  # battery       # Battery level and status
   vi_mode       # Vi-mode indicator
   jobs          # Background jobs indicator
   exit_code     # Exit code section
   char          # Prompt character
 )
 
-plugins=(fzf-functions history-substring-search vi-mode tmux common-aliases colorize git git-extras gitignore pip ruby sibling-cd dirpersist pass themes zsh-syntax-highlighting)
+plugins=(fzf-functions history-substring-search vi-mode tmux common-aliases colorize git git-extras gitignore pip ruby sibling-cd dirpersist themes)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,7 +90,7 @@ setopt extended_history     # save each commands beginning timestamp and the dur
 setopt hist_ignore_all_dups # If a new command line being added to the history list duplicates an older one, the older command is removed from the list
 setopt hist_ignore_space    # remove command lines from the history list when the first character on the line is a space
 
-#HISTFILE=$HOME/.zsh_history
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000000
 SAVEHIST=10000000 # useful for setopt append_history
 
@@ -173,10 +173,10 @@ export PWD_LENGTH=20
 export FZF_CTRL_R_OPTS=--tiebreak=begin,index
 export FZF_CTRL_T_OPTS=--bind=alt-a:select-all,alt-d:deselect-all
 
-export CC=clang
-export CXX=clang++
-# export CC=gcc
-# export CXX=g++
+# export CC=clang
+# export CXX=clang++
+export CC=gcc
+export CXX=g++
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 export XZ_OPT=-T0
 
