@@ -54,7 +54,7 @@ SPACESHIP_PROMPT_ORDER=(
   # swift         # Swift section
   # golang        # Go section
   # php           # PHP section
-  # rust          # Rust section
+  rust          # Rust section
   # haskell       # Haskell Stack section
   # julia         # Julia section
   # docker        # Docker section
@@ -74,7 +74,7 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-plugins=(fzf-functions history-substring-search vi-mode tmux common-aliases colorize git git-extras gitignore pip ruby sibling-cd dirpersist themes)
+plugins=(rust cargo fzf-functions history-substring-search vi-mode tmux common-aliases colorize git git-extras gitignore pip sibling-cd dirpersist themes)
 
 source $ZSH/oh-my-zsh.sh
 
